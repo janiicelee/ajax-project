@@ -15,6 +15,8 @@ var xhr = new XMLHttpRequest();
 xhr.open('GET', 'https://ghibliapi.herokuapp.com/films');
 xhr.responseType = 'json';
 xhr.addEventListener('load', function () {
+  // console.log(xhr.status);
+  // console.log(xhr.response);
 
   for (var i = 0; i < xhr.response.length; i++) {
     var $imgElement = document.createElement('img');
