@@ -38,6 +38,7 @@ xhr.send();
 var $movieinfo = document.querySelector('#movie-info');
 
 function handlePosterClick(event) {
+
   if (event.target.tagName === 'IMG') {
     $movielist.className = 'hidden';
     $infoPage.className = '';
@@ -47,8 +48,16 @@ function handlePosterClick(event) {
   }
 }
 
+// remove childNodes for the detail page
+function removeChildNodes(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+}
+
 // create info page for each movie
 function createMovieInfo(movie) {
+
   var $movieInfoContainer = document.createElement('div');
   var titleElement = document.createElement('h2');
   titleElement.textContent = movie.title + ' ' + movie.original_title;
@@ -96,4 +105,8 @@ $goBackButton.addEventListener('click', goBackToList);
 function goBackToList(event) {
   $infoPage.className = 'hidden';
   $movielist.className = '';
+
+  if (event.target) {
+    removeChildNodes($movieinfo);
+  }
 }
