@@ -20,7 +20,6 @@
     </div>
   </div>
 
-
   <div id="list-page" class="hidden">
     <header>
       <div class="container">
@@ -41,16 +40,27 @@
         <div data-view="list-page">
           <div class="row">
             <div class="column-full text-center">
-              <div id="movie-list">
+              <div id="movie-list" class="">
 
               </div>
             </div>
           </div>
         </div>
+        <div id="info-page" data-view="info-page" class="hidden">
+          <div class="row">
+            <div class="column-full">
+              <div id="movie-info">
+
+              </div>
+            </div>
+          </div>
+          <div id="info-page-buttons" class="row space-between margin-5">
+            <button id="go-back">Go Back</button>
+          </div>
+        </div>
       </div>
     </main>
   </div>
-
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>

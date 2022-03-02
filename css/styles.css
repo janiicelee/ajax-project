@@ -9,7 +9,9 @@
   transform: translate(-50%, -50%);
 }
 
-#susuwatari {
+#susuwatari,
+#movie-poster,
+button {
   cursor: pointer;
 }
 
@@ -39,4 +41,29 @@ a {
 #movie-list > img {
   width: 42%;
   margin: 1.5rem;
+}
+
+.info-box {
+  background-color: #e5e5e5;
+  padding: 2px;
+}
+
+#movie-info {
+  margin: 4%;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  padding: 5px;
+}
+
+.margin-5 {
+  margin: 5%;
+}
+
+#movie-banner {
+  width: 100%;
 }
