@@ -28,6 +28,7 @@ xhr.addEventListener('load', function () {
     $movielist.appendChild($imgElement);
     $imgElement.setAttribute('src', xhr.response[i].image);
     $imgElement.setAttribute('data-movie-index', i);
+    $imgElement.setAttribute('id', 'movie-poster');
 
     $movielist.addEventListener('click', handlePosterClick);
   }
