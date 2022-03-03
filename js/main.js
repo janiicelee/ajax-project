@@ -111,3 +111,14 @@ function goBackToList(event) {
     removeChildNodes($movieinfo);
   }
 }
+
+// show list when user clicks the 'my ghibli' tab
+var $myGhibliTab = document.querySelector('#my-ghibli-tab');
+$myGhibliTab.addEventListener('click', function (event) {
+  $movielist.className = '';
+  $infoPage.className = 'hidden';
+
+  if (event.target) {
+    removeChildNodes($movieinfo);
+  }
+});
