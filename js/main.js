@@ -32,6 +32,7 @@ xhr.addEventListener('load', function () {
     $imgElement.setAttribute('id', 'movie-poster');
 
     $movielist.addEventListener('click', handlePosterClick);
+    $addReviewButton.addEventListener('click', handleReviewButton);
   }
 });
 
@@ -64,6 +65,7 @@ function createMovieInfo(movie) {
 
   var $movieInfoContainer = document.createElement('div');
   var titleElement = document.createElement('h2');
+  titleElement.setAttribute('id', 'movie-title');
   titleElement.textContent = movie.title + ' ' + movie.original_title;
   $movieInfoContainer.appendChild(titleElement);
 
@@ -144,14 +146,20 @@ $reviewsTab.addEventListener('click', function (event) {
   }
 });
 
-// click event for the 'add review' button
+// click event function for the 'add review' button
 var noReviews = document.querySelector('#no-reviews');
 var newReview = document.querySelector('#new-review');
 var $addReviewButton = document.querySelector('#add-review');
-$addReviewButton.addEventListener('click', function (event) {
+
+function handleReviewButton(event) {
   $reviewPage.className = '';
   noReviews.classList.add('hidden');
   newReview.className = '';
   $movielist.className = 'hidden';
   $infoPage.className = 'hidden';
-});
+
+  var reviewMovieTitle = document.querySelector('#review-movie');
+  var reviewImage = document.querySelector('#review-image');
+  reviewMovieTitle.textContent = document.querySelector('#movie-title').textContent;
+  reviewImage.setAttribute('src', document.querySelector('#movie-banner').src);
+}
