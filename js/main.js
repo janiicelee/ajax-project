@@ -43,6 +43,8 @@ function handlePosterClick(event) {
   if (event.target.tagName === 'IMG') {
     $movielist.className = 'hidden';
     $infoPage.className = '';
+    $reviewPage.className = 'hidden';
+
     var id = event.target.getAttribute('data-movie-index');
     var movieInfoDOMTree = createMovieInfo(data.films[id]);
     $movieinfo.appendChild(movieInfoDOMTree);
@@ -106,6 +108,7 @@ $goBackButton.addEventListener('click', goBackToList);
 function goBackToList(event) {
   $infoPage.className = 'hidden';
   $movielist.className = '';
+  $reviewPage.className = 'hidden';
 
   if (event.target) {
     removeChildNodes($movieinfo);
@@ -117,6 +120,20 @@ var $myGhibliTab = document.querySelector('#my-ghibli-tab');
 $myGhibliTab.addEventListener('click', function (event) {
   $movielist.className = '';
   $infoPage.className = 'hidden';
+  $reviewPage.className = 'hidden';
+
+  if (event.target) {
+    removeChildNodes($movieinfo);
+  }
+});
+
+// show reviews when user clicks the 'reviews' tab
+var $reviewsTab = document.querySelector('#reviews-tab');
+var $reviewPage = document.querySelector('#review-page');
+$reviewsTab.addEventListener('click', function (event) {
+  $movielist.className = 'hidden';
+  $infoPage.className = 'hidden';
+  $reviewPage.className = '';
 
   if (event.target) {
     removeChildNodes($movieinfo);

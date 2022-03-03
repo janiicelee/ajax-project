@@ -67,3 +67,11 @@ li {
 #movie-banner {
   width: 100%;
 }
+
+#no-reviews > h3 {
+  margin-top: 5rem;
+}
+
+#totoros {
+  width: 80%;
+}
