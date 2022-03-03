@@ -75,3 +75,20 @@ li {
 #totoros {
   width: 80%;
 }
+
+#review-image {
+  width: 80%;
+}
+
+textarea {
+  width: 100%;
+}
+
+.align-right {
+  text-align: right;
+}
+
+#review-submit-button {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}

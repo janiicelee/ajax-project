@@ -3,6 +3,7 @@ var $susuwatari = document.querySelector('#susuwatari');
 var $frontPage = document.querySelector('.front-page');
 var $listPage = document.querySelector('#list-page');
 var $infoPage = document.querySelector('#info-page');
+var $reviewPage = document.querySelector('#review-page');
 
 // click the susuwatari to start
 function clickSuswatari(event) {
@@ -129,7 +130,6 @@ $myGhibliTab.addEventListener('click', function (event) {
 
 // show reviews when user clicks the 'reviews' tab
 var $reviewsTab = document.querySelector('#reviews-tab');
-var $reviewPage = document.querySelector('#review-page');
 $reviewsTab.addEventListener('click', function (event) {
   $movielist.className = 'hidden';
   $infoPage.className = 'hidden';
@@ -138,4 +138,16 @@ $reviewsTab.addEventListener('click', function (event) {
   if (event.target) {
     removeChildNodes($movieinfo);
   }
+});
+
+// click event for the 'add review' button
+var noReviews = document.querySelector('#no-reviews');
+var newReview = document.querySelector('#new-review');
+var $addReviewButton = document.querySelector('#add-review');
+$addReviewButton.addEventListener('click', function () {
+  $reviewPage.className = '';
+  noReviews.classList.add('hidden');
+  newReview.className = '';
+  $movielist.className = 'hidden';
+  $infoPage.className = 'hidden';
 });
