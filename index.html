@@ -27,6 +27,7 @@
           <div class="row">
             <div id="my-ghibli-tab" class="list-tab" data-view="list-page">
               <a href="#">My Ghibli</a>
+              <img id="totoro-icon" src="images/totoroiconn.png">
             </div>
             <div id="reviews-tab" class="reviews-tab">
               <a href="#">Reviews</a>
@@ -70,12 +71,21 @@
               </div>
 
               <div id="new-review" class="">
-                <h2 id="review-movie"></h2>
-                <img id="review-image">
-                <h3>New Review</h3>
-                <textarea id="review-text" rows="20" cols="40" required></textarea>
-                <div class="align-right">
-                  <button id="review-submit-button" type="submit">Submit</button>
+                <form>
+                  <h2 id="review-movie"></h2>
+                  <img id="review-image">
+                  <h3>New Review</h3>
+                  <textarea id="review-text" rows="20" cols="40" required></textarea>
+                  <div class="align-right">
+                    <button id="review-submit-button" type="submit">Submit</button>
+                  </div>
+                </form>
+              </div>
+
+              <div id="reviews-list" class="hidden" data-view="reviews-list">
+                <h2>Your Reviews</h2>
+                <div>
+                  <ul></ul>
                 </div>
               </div>
 

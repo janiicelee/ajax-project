@@ -26,10 +26,12 @@ header {
 
 .list-tab {
   margin: 10px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .reviews-tab {
-  margin: 12px;
+  margin: 14px;
   font-size: smaller;
 }
 
@@ -91,4 +93,8 @@ textarea {
 #review-submit-button {
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+#totoro-icon {
+  width: 25px;
 }
