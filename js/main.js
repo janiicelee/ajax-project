@@ -133,7 +133,11 @@ var $reviewsTab = document.querySelector('#reviews-tab');
 $reviewsTab.addEventListener('click', function (event) {
   $movielist.className = 'hidden';
   $infoPage.className = 'hidden';
+
+  // when there is no review
   $reviewPage.className = '';
+  noReviews.className = 'text-center';
+  newReview.className = 'hidden';
 
   if (event.target) {
     removeChildNodes($movieinfo);
@@ -144,7 +148,7 @@ $reviewsTab.addEventListener('click', function (event) {
 var noReviews = document.querySelector('#no-reviews');
 var newReview = document.querySelector('#new-review');
 var $addReviewButton = document.querySelector('#add-review');
-$addReviewButton.addEventListener('click', function () {
+$addReviewButton.addEventListener('click', function (event) {
   $reviewPage.className = '';
   noReviews.classList.add('hidden');
   newReview.className = '';
