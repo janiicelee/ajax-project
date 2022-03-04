@@ -216,7 +216,7 @@ function createReviewListItem(review) {
   var liElement = document.createElement('li');
   liElement.setAttribute('data-review-id', review.reviewId);
 
-  var titleElement = document.createElement('h2');
+  var titleElement = document.createElement('h3');
   titleElement.textContent = review.title;
   liElement.appendChild(titleElement);
 
@@ -228,6 +228,15 @@ function createReviewListItem(review) {
   var pElement = document.createElement('p');
   pElement.textContent = review.text;
   liElement.appendChild(pElement);
+
+  var divElement = document.createElement('div');
+  divElement.setAttribute('class', 'align-right');
+  liElement.appendChild(divElement);
+
+  var editButton = document.createElement('button');
+  editButton.setAttribute('id', 'edit-button');
+  editButton.textContent = 'Edit Review';
+  divElement.appendChild(editButton);
 
   return liElement;
 
