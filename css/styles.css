@@ -105,3 +105,7 @@ button {
   color: white;
   padding: 5px;
 }
+
+#review-list-item {
+  margin: 2rem 0;
+}

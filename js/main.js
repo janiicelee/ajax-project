@@ -20,8 +20,6 @@ xhr.open('GET', 'https://ghibliapi.herokuapp.com/films');
 xhr.responseType = 'json';
 
 xhr.addEventListener('load', function () {
-  // console.log(xhr.status);
-  // console.log(xhr.response);
   data.films = xhr.response;
 
   for (var i = 0; i < data.films.length; i++) {
@@ -64,9 +62,9 @@ function removeChildNodes(parent) {
 function createMovieInfo(movie) {
 
   var $movieInfoContainer = document.createElement('div');
-  var titleElement = document.createElement('h2');
+  var titleElement = document.createElement('h3');
   titleElement.setAttribute('id', 'movie-title');
-  titleElement.textContent = movie.title + ' ' + movie.original_title;
+  titleElement.textContent = movie.title + ' ' + '(' + movie.original_title + ')';
   $movieInfoContainer.appendChild(titleElement);
 
   var imgElement = document.createElement('img');
