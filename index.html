@@ -25,10 +25,11 @@
       <div class="container">
         <div class="column-full list-page">
           <div class="row">
-            <div class="list-tab" data-view="list-page">
+            <div id="my-ghibli-tab" class="list-tab" data-view="list-page">
               <a href="#">My Ghibli</a>
+              <img id="totoro-icon" src="images/totoroiconn.png">
             </div>
-            <div class="reviews-tab">
+            <div id="reviews-tab" class="reviews-tab">
               <a href="#">Reviews</a>
             </div>
           </div>
@@ -46,6 +47,7 @@
             </div>
           </div>
         </div>
+
         <div id="info-page" data-view="info-page" class="hidden">
           <div class="row">
             <div class="column-full">
@@ -56,6 +58,43 @@
           </div>
           <div id="info-page-buttons" class="row space-between margin-5">
             <button id="go-back">Go Back</button>
+            <button id="add-review">Add Review</button>
+          </div>
+        </div>
+
+        <div id="review-page" data-view="review-page" class="hidden">
+          <div class="row">
+            <div class="column-full">
+              <div id="no-reviews" class="text-center">
+                <h3>No Reviews Yet!</h3>
+                <img id="totoros" src="images/totoros.png" alt="totoros">
+              </div>
+
+              <div id="new-review" class="">
+                <div class="column-full">
+                  <form>
+                    <h2 id="review-movie"></h2>
+                    <img id="review-image">
+                    <h3>New Review</h3>
+                    <textarea id="review-text" rows="20" cols="40" required></textarea>
+                    <div class="align-right">
+                      <button id="review-submit-button" type="submit">Submit</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+              <div id="reviews-list" class="" data-view="reviews-list">
+                <div class="row">
+                  <div class="column-full">
+                    <h2>Your Reviews</h2>
+                    <ul id="new-reviews-list">
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
       </div>

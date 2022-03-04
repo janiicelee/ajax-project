@@ -26,10 +26,12 @@ header {
 
 .list-tab {
   margin: 10px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .reviews-tab {
-  margin: 12px;
+  margin: 14px;
   font-size: smaller;
 }
 
@@ -52,11 +54,11 @@ a {
   margin: 4%;
 }
 
-ul {
+.infobox > ul {
   list-style: none;
 }
 
-li {
+.infobox > li {
   padding: 5px;
 }
 
@@ -66,4 +68,40 @@ li {
 
 #movie-banner {
   width: 100%;
+}
+
+#no-reviews > h3 {
+  margin-top: 5rem;
+}
+
+#totoros {
+  width: 80%;
+}
+
+#review-image {
+  width: 100%;
+}
+
+textarea {
+  width: 100%;
+}
+
+.align-right {
+  text-align: right;
+}
+
+#review-submit-button {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+#totoro-icon {
+  width: 25px;
+}
+
+button {
+  border-radius: 5px;
+  background-color: grey;
+  color: white;
+  padding: 5px;
 }
