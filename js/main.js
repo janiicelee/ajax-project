@@ -187,18 +187,45 @@ $form.addEventListener('submit', saveReview);
 function saveReview(event) {
   event.preventDefault();
   var review = {};
-  review = {
-    title: document.querySelector('#movie-title').textContent,
-    image: document.querySelector('#movie-banner').src,
-    text: $form.elements[0].value,
-    reviewId: data.nextReviewId
-  };
+  if (data.editing === null) {
+    review = {
+      title: document.querySelector('#movie-title').textContent,
+      image: document.querySelector('#movie-banner').src,
+      text: $form.elements[0].value,
+      reviewId: data.nextReviewId
+    };
 
-  // add new review to the data model
-  data.nextReviewId++;
-  data.reviews.unshift(review);
-  $ulElement.prepend(createReviewListItem(review));
-  $form.reset();
+    // add new review to the data model
+    data.nextReviewId++;
+    data.reviews.unshift(review);
+    $ulElement.prepend(createReviewListItem(review));
+    $form.reset();
+
+  } else if (data.editing !== null) {
+    review.title = document.querySelector('#movie-title').textContent;
+    review.image = document.querySelector('#movie-banner').src;
+    review.text = $form.elements[0].value;
+    review.reviewId = data.editing.reviewId;
+
+    // put the edited review into the reviews list
+    for (var i = 0; i < data.reviews.length; i++) {
+      if (data.reviews[i].reviewId === review.reviewId) {
+        data.reviews[i] = review;
+      }
+    }
+
+    // replace exisiting DOM element with another one
+    var reviewItems = document.querySelectorAll('#review-list-item');
+    for (i = 0; i < reviewItems.length; i++) {
+      var reviewItemId = JSON.parse(reviewItems[i].getAttribute('data-review-id'));
+      if (reviewItemId === data.editing.reviewId) {
+        reviewItems[i].replaceWith(createReviewListItem(review));
+      }
+    }
+
+    data.editing = null;
+    $form.reset();
+  }
 
   // switches to the reviews list
   $movielist.className = 'hidden';
@@ -214,9 +241,11 @@ function saveReview(event) {
 // create DOM to display the reviews
 function createReviewListItem(review) {
   var liElement = document.createElement('li');
+  liElement.setAttribute('id', 'review-list-item');
   liElement.setAttribute('data-review-id', review.reviewId);
 
   var titleElement = document.createElement('h3');
+  titleElement.setAttribute('id', 'movie-title');
   titleElement.textContent = review.title;
   liElement.appendChild(titleElement);
 
