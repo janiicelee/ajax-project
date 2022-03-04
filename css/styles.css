@@ -54,11 +54,11 @@ a {
   margin: 4%;
 }
 
-ul {
+.infobox > ul {
   list-style: none;
 }
 
-li {
+.infobox > li {
   padding: 5px;
 }
 

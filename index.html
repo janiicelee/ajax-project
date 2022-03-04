@@ -71,21 +71,26 @@
               </div>
 
               <div id="new-review" class="">
-                <form>
-                  <h2 id="review-movie"></h2>
-                  <img id="review-image">
-                  <h3>New Review</h3>
-                  <textarea id="review-text" rows="20" cols="40" required></textarea>
-                  <div class="align-right">
-                    <button id="review-submit-button" type="submit">Submit</button>
-                  </div>
-                </form>
+                <div class="column-full">
+                  <form>
+                    <h2 id="review-movie"></h2>
+                    <img id="review-image">
+                    <h3>New Review</h3>
+                    <textarea id="review-text" rows="20" cols="40" required></textarea>
+                    <div class="align-right">
+                      <button id="review-submit-button" type="submit">Submit</button>
+                    </div>
+                  </form>
+                </div>
               </div>
 
-              <div id="reviews-list" class="hidden" data-view="reviews-list">
-                <h2>Your Reviews</h2>
-                <div>
-                  <ul></ul>
+              <div id="reviews-list" class="" data-view="reviews-list">
+                <div class="row">
+                  <div class="column-full">
+                    <h2>Your Reviews</h2>
+                    <ul id="new-reviews-list">
+                    </ul>
+                  </div>
                 </div>
               </div>
 
