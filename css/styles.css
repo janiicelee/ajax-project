@@ -98,3 +98,10 @@ textarea {
 #totoro-icon {
   width: 25px;
 }
+
+button {
+  border-radius: 5px;
+  background-color: grey;
+  color: white;
+  padding: 5px;
+}
