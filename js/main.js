@@ -251,3 +251,31 @@ document.addEventListener('DOMContentLoaded', function (event) {
     newReviewsList.appendChild(result);
   }
 });
+
+// listen for click event on the parent element of all rendered reviews
+newReviewsList.addEventListener('click', function (event) {
+  if (event.target && event.target.matches('BUTTON')) {
+    var $liClosest = event.target.closest('li');
+    var $reviewId = $liClosest.getAttribute('data-review-id');
+
+    $reviewId = JSON.parse($reviewId);
+    for (var i = 0; i < data.reviews.length; i++) {
+      if (data.reviews[i].reviewId === $reviewId) {
+        data.editing = data.reviews[i];
+      }
+    }
+
+    // populate the input fields with the object stored in data.editing
+    document.querySelector('#review-movie').textContent = data.editing.title;
+    document.querySelector('#review-image').src = data.editing.image;
+    $form.elements[0].value = data.editing.text;
+
+    // show the review page where user wants to edit
+    $reviewPage.className = '';
+    noReviews.classList.add('hidden');
+    newReview.className = '';
+    $movielist.className = 'hidden';
+    $infoPage.className = 'hidden';
+    $reviewsList.className = 'hidden';
+  }
+});
