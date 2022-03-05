@@ -109,3 +109,39 @@ button {
 #review-list-item {
   margin: 2rem 0;
 }
+
+.baseline {
+  align-items: baseline;
+}
+
+.dark-bg {
+  background-color: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+#confirm-modal {
+  background-color: white;
+  width: 380px;
+  height: 120px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+}
+
+#confirm-text {
+  padding-left: 10%;
+  margin: 5% 0;
+}
+
+#cancel-button {
+  margin: 0 9%;
+}
+
+#confirm-button {
+  margin: 0 9%;
+  background-color: #dc2626;
+}
