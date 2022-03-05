@@ -20,8 +20,6 @@ xhr.open('GET', 'https://ghibliapi.herokuapp.com/films');
 xhr.responseType = 'json';
 
 xhr.addEventListener('load', function () {
-  // console.log(xhr.status);
-  // console.log(xhr.response);
   data.films = xhr.response;
 
   for (var i = 0; i < data.films.length; i++) {
@@ -64,9 +62,9 @@ function removeChildNodes(parent) {
 function createMovieInfo(movie) {
 
   var $movieInfoContainer = document.createElement('div');
-  var titleElement = document.createElement('h2');
+  var titleElement = document.createElement('h3');
   titleElement.setAttribute('id', 'movie-title');
-  titleElement.textContent = movie.title + ' ' + movie.original_title;
+  titleElement.textContent = movie.title + ' ' + '(' + movie.original_title + ')';
   $movieInfoContainer.appendChild(titleElement);
 
   var imgElement = document.createElement('img');
@@ -187,18 +185,45 @@ $form.addEventListener('submit', saveReview);
 function saveReview(event) {
   event.preventDefault();
   var review = {};
-  review = {
-    title: document.querySelector('#movie-title').textContent,
-    image: document.querySelector('#movie-banner').src,
-    text: $form.elements[0].value,
-    reviewId: data.nextReviewId
-  };
+  if (data.editing === null) {
+    review = {
+      title: document.querySelector('#movie-title').textContent,
+      image: document.querySelector('#movie-banner').src,
+      text: $form.elements[0].value,
+      reviewId: data.nextReviewId
+    };
 
-  // add new review to the data model
-  data.nextReviewId++;
-  data.reviews.unshift(review);
-  $ulElement.prepend(createReviewListItem(review));
-  $form.reset();
+    // add new review to the data model
+    data.nextReviewId++;
+    data.reviews.unshift(review);
+    $ulElement.prepend(createReviewListItem(review));
+    $form.reset();
+
+  } else if (data.editing !== null) {
+    review.title = document.querySelector('#movie-title').textContent;
+    review.image = document.querySelector('#movie-banner').src;
+    review.text = $form.elements[0].value;
+    review.reviewId = data.editing.reviewId;
+
+    // put the edited review into the reviews list
+    for (var i = 0; i < data.reviews.length; i++) {
+      if (data.reviews[i].reviewId === review.reviewId) {
+        data.reviews[i] = review;
+      }
+    }
+
+    // replace exisiting DOM element with another one
+    var reviewItems = document.querySelectorAll('#review-list-item');
+    for (i = 0; i < reviewItems.length; i++) {
+      var reviewItemId = JSON.parse(reviewItems[i].getAttribute('data-review-id'));
+      if (reviewItemId === data.editing.reviewId) {
+        reviewItems[i].replaceWith(createReviewListItem(review));
+      }
+    }
+
+    data.editing = null;
+    $form.reset();
+  }
 
   // switches to the reviews list
   $movielist.className = 'hidden';
@@ -214,9 +239,11 @@ function saveReview(event) {
 // create DOM to display the reviews
 function createReviewListItem(review) {
   var liElement = document.createElement('li');
+  liElement.setAttribute('id', 'review-list-item');
   liElement.setAttribute('data-review-id', review.reviewId);
 
-  var titleElement = document.createElement('h2');
+  var titleElement = document.createElement('h3');
+  titleElement.setAttribute('id', 'movie-title');
   titleElement.textContent = review.title;
   liElement.appendChild(titleElement);
 
@@ -229,6 +256,15 @@ function createReviewListItem(review) {
   pElement.textContent = review.text;
   liElement.appendChild(pElement);
 
+  var divElement = document.createElement('div');
+  divElement.setAttribute('class', 'align-right');
+  liElement.appendChild(divElement);
+
+  var editButton = document.createElement('button');
+  editButton.setAttribute('id', 'edit-button');
+  editButton.textContent = 'Edit Review';
+  divElement.appendChild(editButton);
+
   return liElement;
 
 }
@@ -240,5 +276,33 @@ document.addEventListener('DOMContentLoaded', function (event) {
   for (var i = 0; i < data.reviews.length; i++) {
     var result = createReviewListItem(data.reviews[i]);
     newReviewsList.appendChild(result);
+  }
+});
+
+// listen for click event on the parent element of all rendered reviews
+newReviewsList.addEventListener('click', function (event) {
+  if (event.target && event.target.matches('BUTTON')) {
+    var $liClosest = event.target.closest('li');
+    var $reviewId = $liClosest.getAttribute('data-review-id');
+
+    $reviewId = JSON.parse($reviewId);
+    for (var i = 0; i < data.reviews.length; i++) {
+      if (data.reviews[i].reviewId === $reviewId) {
+        data.editing = data.reviews[i];
+      }
+    }
+
+    // populate the input fields with the object stored in data.editing
+    document.querySelector('#review-movie').textContent = data.editing.title;
+    document.querySelector('#review-image').src = data.editing.image;
+    $form.elements[0].value = data.editing.text;
+
+    // show the review page where user wants to edit
+    $reviewPage.className = '';
+    noReviews.classList.add('hidden');
+    newReview.className = '';
+    $movielist.className = 'hidden';
+    $infoPage.className = 'hidden';
+    $reviewsList.className = 'hidden';
   }
 });
