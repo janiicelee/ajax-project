@@ -218,7 +218,7 @@ function saveReview(event) {
     }
 
     // replace exisiting DOM element with another one
-    var reviewItems = document.querySelectorAll('#review-list-item');
+    var reviewItems = document.querySelectorAll('.review-list-item');
     for (i = 0; i < reviewItems.length; i++) {
       var reviewItemId = JSON.parse(reviewItems[i].getAttribute('data-review-id'));
       if (reviewItemId === data.editing.reviewId) {
