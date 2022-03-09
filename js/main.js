@@ -132,7 +132,9 @@ var $reviewsTab = document.querySelector('#reviews-tab');
 var $reviewsList = document.querySelector('#reviews-list');
 
 // show reviews when user clicks the 'reviews' tab
-$reviewsTab.addEventListener('click', function (event) {
+$reviewsTab.addEventListener('click', clickReviewTab);
+
+function clickReviewTab(event) {
   $movielist.className = 'hidden';
   $infoPage.className = 'hidden';
 
@@ -155,7 +157,7 @@ $reviewsTab.addEventListener('click', function (event) {
   if (event.target) {
     removeChildNodes($movieinfo);
   }
-});
+}
 
 // click event function for the 'add review' button
 var noReviews = document.querySelector('#no-reviews');
@@ -169,6 +171,9 @@ function handleReviewButton(event) {
   $movielist.className = 'hidden';
   $infoPage.className = 'hidden';
   $reviewsList.className = 'hidden';
+
+  // hide the delete button when adding a new review
+  $deleteButton.className = 'visibility-hidden';
 
   var reviewMovieTitle = document.querySelector('#review-movie');
   var reviewImage = document.querySelector('#review-image');
@@ -239,7 +244,7 @@ function saveReview(event) {
 // create DOM to display the reviews
 function createReviewListItem(review) {
   var liElement = document.createElement('li');
-  liElement.setAttribute('id', 'review-list-item');
+  liElement.setAttribute('class', 'review-list-item');
   liElement.setAttribute('data-review-id', review.reviewId);
 
   var titleElement = document.createElement('h3');
@@ -261,7 +266,8 @@ function createReviewListItem(review) {
   liElement.appendChild(divElement);
 
   var editButton = document.createElement('button');
-  editButton.setAttribute('id', 'edit-button');
+  editButton.setAttribute('class', 'edit-button');
+  editButton.setAttribute('type', 'button');
   editButton.textContent = 'Edit Review';
   divElement.appendChild(editButton);
 
@@ -280,8 +286,11 @@ document.addEventListener('DOMContentLoaded', function (event) {
 });
 
 // listen for click event on the parent element of all rendered reviews
-newReviewsList.addEventListener('click', function (event) {
-  if (event.target && event.target.matches('BUTTON')) {
+newReviewsList.addEventListener('click', handleEditButton);
+
+function handleEditButton(event) {
+  if (event.target.matches('.edit-button')) {
+    $deleteButton.className = '';
     var $liClosest = event.target.closest('li');
     var $reviewId = $liClosest.getAttribute('data-review-id');
 
@@ -305,4 +314,43 @@ newReviewsList.addEventListener('click', function (event) {
     $infoPage.className = 'hidden';
     $reviewsList.className = 'hidden';
   }
+}
+
+var $deleteButton = document.querySelector('#delete-button');
+
+// show the confirmation modal
+var $modal = document.querySelector('#modal');
+$deleteButton.addEventListener('click', function (event) {
+  $modal.className = 'dark-bg';
+});
+
+// hide the confirmation modal when the user clicks cancel
+var $cancelButton = document.querySelector('#cancel-button');
+$cancelButton.addEventListener('click', function (event) {
+  $modal.className = 'dark-bg hidden';
+});
+
+// remove the review from the data model and the dom tree
+var $confirmButton = document.querySelector('#confirm-button');
+$confirmButton.addEventListener('click', function (event) {
+
+  var reviewItems = document.querySelectorAll('.review-list-item');
+  for (var i = 0; i < data.reviews.length; i++) {
+    if (data.reviews[i].reviewId === data.editing.reviewId) {
+      data.reviews.splice(i, 1);
+    }
+
+    var reviewIdNum = JSON.parse(reviewItems[i].getAttribute('data-review-id'));
+    if (reviewIdNum === data.editing.reviewId) {
+      reviewItems[i].remove();
+    }
+  }
+
+  // reset form and go back to reviews list
+  data.editing = null;
+  data.view = 'reviews-list';
+  $modal.className = 'dark-bg hidden';
+  $form.reset();
+  clickReviewTab(event);
+
 });

@@ -145,3 +145,7 @@ button {
   margin: 0 9%;
   background-color: #dc2626;
 }
+
+.visibility-hidden {
+  visibility: hidden;
+}
