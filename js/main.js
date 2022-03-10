@@ -5,6 +5,10 @@ var $listPage = document.querySelector('#list-page');
 var $infoPage = document.querySelector('#info-page');
 var $reviewPage = document.querySelector('#review-page');
 
+// loading spinner
+var loadingSpinner = document.querySelector('.lds-default');
+loadingSpinner.className = 'lds-default';
+
 // click the susuwatari to start
 function clickSuswatari(event) {
   $frontPage.className = 'front-page hidden';
@@ -20,6 +24,12 @@ xhr.open('GET', 'https://ghibliapi.herokuapp.com/films');
 xhr.responseType = 'json';
 
 xhr.addEventListener('load', function () {
+  // show the susuwatari to get started
+  $frontPage.className = 'front-page';
+
+  // hide the loading spinner
+  loadingSpinner.className = 'lds-default hidden';
+
   data.films = xhr.response;
 
   for (var i = 0; i < data.films.length; i++) {
