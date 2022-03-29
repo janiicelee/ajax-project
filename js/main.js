@@ -282,7 +282,6 @@ function createReviewListItem(review) {
   divElement.appendChild(editButton);
 
   return liElement;
-
 }
 
 const newReviewsList = document.querySelector('#new-reviews-list');
@@ -303,8 +302,8 @@ function handleEditButton(event) {
     $deleteButton.className = '';
     const $liClosest = event.target.closest('li');
     let $reviewId = $liClosest.getAttribute('data-review-id');
-
     $reviewId = JSON.parse($reviewId);
+
     for (let i = 0; i < data.reviews.length; i++) {
       if (data.reviews[i].reviewId === $reviewId) {
         data.editing = data.reviews[i];
@@ -362,5 +361,4 @@ $confirmButton.addEventListener('click', function (event) {
   $modal.className = 'dark-bg hidden';
   $form.reset();
   clickReviewTab(event);
-
 });
