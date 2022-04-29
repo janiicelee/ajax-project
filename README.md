@@ -26,6 +26,7 @@ I love watching Hayao Miyazaki's films since I was a kid and I can still watch t
 - User can listen to the OST of each film
 
 ## Preview
+![Kapture 2022-04-29 at 12 55 32](https://user-images.githubusercontent.com/57986882/166060839-55b14c9b-a58c-43dc-aba6-b40584c328a3.gif)
 
 
 ### Getting started
