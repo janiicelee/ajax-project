@@ -2,9 +2,6 @@
 
 A web application for Studio Ghibli fans who want to make reviews on their favorite films.
 
-### Why?
-I love watching Hayao Miyazaki's films since I was a kid and I can still watch the same movie over and over again. As a big fan, I found out that Studio Ghibli has its own public API and thought it would be a good idea to make an app with it. So I created a simple CRUD app where the user can see the posters of the movie, see the detail information of the movie, leave reviews and delete or edit it!
-
 ## Live Demo
 [My Ghibli](https://janiicelee.github.io/my-ghibli/)
 
@@ -27,6 +24,7 @@ I love watching Hayao Miyazaki's films since I was a kid and I can still watch t
 
 ## Preview
 ![Kapture 2022-04-29 at 12 55 32](https://user-images.githubusercontent.com/57986882/166060839-55b14c9b-a58c-43dc-aba6-b40584c328a3.gif)
+![Kapture 2022-04-29 at 12 58 57](https://user-images.githubusercontent.com/57986882/166061501-ff630a32-b57e-4458-8698-86830828da9a.gif)
 
 
 ### Getting started
