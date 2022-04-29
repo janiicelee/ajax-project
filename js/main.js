@@ -123,7 +123,7 @@ $goBackButton.addEventListener('click', goBackToList);
 
 function goBackToList(event) {
   $infoPage.className = 'hidden';
-  $movielist.className = '';
+  $movielist.className = 'row';
   $reviewPage.className = 'hidden';
 
   if (event.target) {
