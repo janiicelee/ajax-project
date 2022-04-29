@@ -29,9 +29,4 @@
   .column-full {
     padding: 0 0.75rem;
   }
-
-  #movielistitem {
-    display: flex;
-    grid-column: span 2;
-  }
 }
