@@ -31,7 +31,7 @@ A web application for Studio Ghibli fans who want to make reviews on their favor
 ### Getting started
 1. Clone the repository
 ```
-git@github.com:janiicelee/my-ghibli.git
+git clone git@github.com:janiicelee/my-ghibli.git
 cd my-ghibli
 ```
 2. Install all the dependencies with NPM
