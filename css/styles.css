@@ -40,8 +40,8 @@ a {
   color: black;
 }
 
-#movie-list > img {
-  width: 42%;
+#movielistitem > img {
+  max-width: 80%;
   margin: 1.5rem;
 }
 
@@ -256,4 +256,8 @@ button {
   50% {
     transform: scale(1.5);
   }
+}
+
+#new-reviews-list {
+  list-style: none;
 }

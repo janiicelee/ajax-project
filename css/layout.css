@@ -13,8 +13,7 @@
   flex-wrap: wrap;
 }
 
-.column-full,
-.column-half {
+.column-full {
   width: 100%;
 }
 
@@ -23,12 +22,16 @@
     max-width: 900px;
   }
 
-  .column-full,
-  .column-half {
+  .column {
+    width: 50%;
+  }
+
+  .column-full {
     padding: 0 0.75rem;
   }
 
-  .column-half {
-    width: 50%;
+  #movielistitem {
+    display: flex;
+    grid-column: span 2;
   }
 }
