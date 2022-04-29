@@ -33,8 +33,12 @@ xhr.addEventListener('load', function () {
   data.films = xhr.response;
 
   for (let i = 0; i < data.films.length; i++) {
+    const $movielistitem = document.createElement('div');
+    $movielist.appendChild($movielistitem);
+    $movielistitem.setAttribute('class', 'column');
+    $movielistitem.setAttribute('id', 'movielistitem');
     const $imgElement = document.createElement('img');
-    $movielist.appendChild($imgElement);
+    $movielistitem.appendChild($imgElement);
     $imgElement.setAttribute('src', xhr.response[i].image);
     $imgElement.setAttribute('data-movie-index', i);
     $imgElement.setAttribute('id', 'movie-poster');
@@ -42,6 +46,7 @@ xhr.addEventListener('load', function () {
     $movielist.addEventListener('click', handlePosterClick);
     $addReviewButton.addEventListener('click', handleReviewButton);
   }
+
 });
 
 xhr.send();
@@ -129,7 +134,7 @@ function goBackToList(event) {
 // show list when user clicks the 'my ghibli' tab
 const $myGhibliTab = document.querySelector('#my-ghibli-tab');
 $myGhibliTab.addEventListener('click', function (event) {
-  $movielist.className = '';
+  $movielist.className = 'row';
   $infoPage.className = 'hidden';
   $reviewPage.className = 'hidden';
 

@@ -13,8 +13,7 @@
   flex-wrap: wrap;
 }
 
-.column-full,
-.column-half {
+.column-full {
   width: 100%;
 }
 
@@ -23,12 +22,11 @@
     max-width: 900px;
   }
 
-  .column-full,
-  .column-half {
-    padding: 0 0.75rem;
+  .column {
+    width: 50%;
   }
 
-  .column-half {
-    width: 50%;
+  .column-full {
+    padding: 0 0.75rem;
   }
 }
