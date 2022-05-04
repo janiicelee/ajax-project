@@ -1,5 +1,5 @@
 /* exported data */
-var data = {
+let data = {
   view: 'list-page',
   films: [],
   reviews: [],
@@ -7,12 +7,12 @@ var data = {
   nextReviewId: 1
 };
 
-var previousData = localStorage.getItem('my-ghibli');
+const previousData = localStorage.getItem('my-ghibli');
 if (previousData !== null) {
   data = JSON.parse(previousData);
 }
 
 window.addEventListener('beforeunload', function (event) {
-  var reviewsJSON = JSON.stringify(data);
+  const reviewsJSON = JSON.stringify(data);
   localStorage.setItem('my-ghibli', reviewsJSON);
 });
